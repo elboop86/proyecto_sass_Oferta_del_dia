@@ -1,0 +1,61 @@
+// funciones
+@function size($value) { //  Define una función llamada size que toma un parámetro $value.
+    @return $value * $unit; // Multiplica el valor de entrada $value por el valor de la variable $unit.
+// La función size en tu código SCSS toma un valor numérico como entrada y lo multiplica por una variable llamada $unit. Luego, devuelve este valor resultante.
+}
+
+@mixin reset-pm {
+     padding: 0;
+    margin: 0;
+}
+
+// estilos para las filas y columnas
+
+.row {
+    display: flex;
+    align-items: center;
+    .col {
+        width: 50%;
+    }
+
+    .col-30 {
+        width: 30%;
+    }
+
+    .col-70 {
+        width: 70%;
+    }
+}
+
+.m-auto {
+    margin: 0 auto;
+}
+
+@for $i from 1 to $limite{
+
+    .m-#{$i} {
+        margin: $i * $unit;
+    }
+}
+
+@for $i from 1 to $limite{
+
+    .p-#{$i} {
+        padding: $i * $unit;
+    }
+}
+
+@for $i from 1 to $limite{
+
+    .py-#{$i} {
+        padding: $i * $unit 0;
+    }
+}
+
+// estilos para los anchos
+
+@for $i from 1 to 4 {
+    .w-#{$i} {
+        width: $i * 25%;
+    }
+}

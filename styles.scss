@@ -1,0 +1,109 @@
+
+// Variables
+
+
+@import 'config'; // importar parte del código desde otro archivo,primero config que lleva todas las variables.
+@import 'button'; // importar parte del código desde otro archivo, despues de las variables, ya que antes da error.
+@import 'utils';  // importar parte del código desde otro archivo, las funciones.
+
+// funciones
+@function size($value) { //  Define una función llamada size que toma un parámetro $value.
+    @return $value * $unit; // Multiplica el valor de entrada $value por el valor de la variable $unit.
+// La función size en tu código SCSS toma un valor numérico como entrada y lo multiplica por una variable llamada $unit. Luego, devuelve este valor resultante.
+}
+
+// mixin permite anidar bloques de estilos que puedo llamar siempre que necesite
+
+
+
+*{
+    @include reset-pm(); // así agrego mixit "bloque de estilo"
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $primary-color;
+}
+
+a{
+    color: $secondary-color;
+    text-decoration: none;
+}
+
+.Logo {
+    width: 40px;
+    margin-left: 10px;
+}
+
+h2 {
+    font-weight: bolder;
+    font-size: size(6); //Llama a la función size con un valor de entrada de 6. Esto calculará el tamaño de fuente basado en la multiplicación de 6 por $unit.
+}
+
+h3 {
+    font-weight: lighter;
+    font-size: size(3); //Llama a la función size con un valor de entrada de 6. Esto calculará el tamaño de fuente basado en la multiplicación de 6 por $unit.
+}
+
+.container {
+    background-color: white;
+    margin: 100px auto;
+    width: 1280px;
+    padding: 50px;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
+
+    background-image: url(img/fondo.jpg.jpg);
+    background-size: 100% 100%;
+}
+
+// anidación
+// puedo anidar estilos dentro de grupos
+
+ul{
+    @include reset-pm(); // así agrego mixit "bloque de estilo"
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    li {
+
+        a{
+            @include btn($background-color: $terciary-color,
+             $color: $font-color, $bold: 'true'); // mixit de btn con parámetros de variables
+
+           &:hover {
+            @include btn($secondary-color, $terciary-color, 'false');
+            box-shadow: $box-shadow;
+           }  
+        }
+    }
+}
+
+header {
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+}
+
+// estilos para lkos precios
+
+.prices {
+    .prev {
+        font-size: size(2);
+        font-weight: bolder;
+        color: $font-color;
+        text-decoration: line-through;
+    }
+
+    .now {
+       font-size: size(5);
+        font-weight: bolder; 
+    }
+}
+
+
+
+
+
